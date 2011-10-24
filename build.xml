@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project name="MPR">
+
+		<property name="bin" value="bin"></property>
+		<property name="src" value="src"></property>
+		<property name="jar" value="${bin}/jar"></property>
+
+		<target name="kompiluj">
+			<javac srcdir="src" destdir="bin"/>
+		</target>
+
+		<target name="utworz_jar" depends="kompiluj">
+			<jar destfile="${jar}/MPR.jar" basedir="bin"></jar>
+		</target>
+
+		<target name="uruchom_jar" depends="utworz_jar">
+			<java jar="${jar}/MPR.jar" fork="true"/>
+		</target>
+</project>
