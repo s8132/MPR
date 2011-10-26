@@ -28,7 +28,12 @@ public class Music extends Multimedia {
 	public ArrayList<Music> music = new ArrayList<Music>();
 	
 	public void addItem(String artist, String album, String year, String title){
-		music.add(new Music(artist, album, year, title));
+		try{
+			music.add(new Music(artist, album, year, title));
+		}catch (Exception e){
+			new Exception("B³¹d dodawania! ", e);
+		}
+		
 	}
 	
 	public void writeList(){
@@ -46,15 +51,25 @@ public class Music extends Multimedia {
 		for(Music track : music){
 			inter++;
 			if(track.getAlbum().endsWith(title)){
-				music.remove(inter);
-			
+				try{
+					music.remove(inter);
+				}catch (Exception e){
+					new Exception("B³¹d usuwania", e);
+				}
 			}
 		}
 		
 	}
 	
 	public void removeAll(){
-		music.clear();
+		
+		try{
+			music.clear();
+		}catch (Exception e){
+			new Exception("B³¹d czyszczenia ", e);
+		}
+		
+		
 	}
 	
 	public void edit(String oldTitle, String newTitle, String artist, String album, String year){
