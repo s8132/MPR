@@ -21,15 +21,52 @@ public class Lista {
 	     */
 		Music test = new Music();
 		
-		test.addItem("Artysta 1", "Album 1", "Year 1", "Tytu³ 1");
-		test.addItem("Artysta 2", "Album 2", "Year 2", "Tytu³ 2");
-		test.addItem("Artysta 3", "Album 3", "Year 3", "Tytu³ 3");
+		try {
+			test.addItem("Artysta 55", "Album 45", "Year 1", "Tytu³ 1");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			test.addItem("Artysta 1", "Album 1", "Year 1", "Tytu³ 1");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			test.addItem("Artysta 2", "Album 2", "Year 2", "Tytu³ 2");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			test.addItem("Artysta 3", "Album 3", "Year 3", "Tytu³ 3");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			test.addItem("Artysta 4", "Album 4", "Year 4", "");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		//System.out.println(test.search("Tytu³ 1"));
+		//test.searchResult("Tytu³ 1");
+		
 		System.out.println("Rozmiar tablicy: " + test.getSize());
 		test.writeList();
 		System.out.println("\n");
-		//test.removeAll();
-		test.removeItem("Tytu³ 2");
+		
+		test.removeItem("Tytu³ 1");
 		test.writeList();
+		
+		
+		//test.removeAll();
+		
+		
 	
 	}
 

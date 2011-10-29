@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 public class Music extends Multimedia {
 	String artist;
 	String album;
@@ -25,63 +29,90 @@ public class Music extends Multimedia {
 		this.title = title;
 	}
 	
+	
+	
 	public ArrayList<Music> music = new ArrayList<Music>();
 	
-	public void addItem(String artist, String album, String year, String title){
-		try{
-			music.add(new Music(artist, album, year, title));
-		}catch (Exception e){
-			new Exception("B³¹d dodawania! ", e);
-		}
+	static Logger logger = Logger.getLogger(Music.class);
+	
+	
+	public void addItem(String artist, String album, String year, String title) throws Exception{
 		
+		
+		
+		
+		
+		if (title == ""){
+			PropertyConfigurator.configure("logError.properties");
+			logger.error("Error title");
+			throw new Exception("Title is null");
+		}
+		PropertyConfigurator.configure("logging.properties");
+			music.add(new Music(artist, album, year, title));
+			logger.debug("Doda³e do listy!");
 	}
 	
 	public void writeList(){
+		PropertyConfigurator.configure("logging.properties");
+		
 		System.out.println("Tytu³\t| Artysta\t| Album\t\t| Rok");
 		System.out.println("----------------------------------------------------");
 		for(Music track : music){
 			System.out.println(track.getTitle() + "\t| " + track.getArtist()
 					+ "\t| " + track.getAlbum() + "\t| " + track.getYear());
 		}
+		logger.debug("Wypisa³em listê!");
 	}
 	
 	public void removeItem(String title){
-
-		int inter = 0;
-		for(Music track : music){
-			inter++;
-			if(track.getAlbum().endsWith(title)){
-				try{
-					music.remove(inter);
-				}catch (Exception e){
-					new Exception("B³¹d usuwania", e);
-				}
-			}
-		}
+		PropertyConfigurator.configure("logging.properties");
 		
+		music.remove(this.search(title));
+		logger.debug("Usunalem element");
 	}
 	
 	public void removeAll(){
+		PropertyConfigurator.configure("logging.properties");
 		
-		try{
 			music.clear();
-		}catch (Exception e){
-			new Exception("B³¹d czyszczenia ", e);
-		}
-		
-		
+			logger.debug("Usunalem wszystko");
 	}
 	
 	public void edit(String oldTitle, String newTitle, String artist, String album, String year){
+		PropertyConfigurator.configure("logging.properties");
+		
 		int inter = 0;
 		for(Music track : music){
 			inter++;
 			if(track.getTitle().equalsIgnoreCase(oldTitle)){
 				music.set(inter, new Music(artist, album, year, newTitle));
-			
 			}
 		}
+		logger.debug("Edytowa³em element");
 	}
+	
+	
+	public Music search(String title){
+		for(Music track : music){
+			if(track.getTitle().equalsIgnoreCase(title)){
+				return track;
+			}
+		}
+		return search(title);
+	}
+	
+	
+	public void searchResult(String ble){
+		PropertyConfigurator.configure("logging.properties");
+		
+		for(Music track : music){
+			if(this.search(ble).getTitle().equalsIgnoreCase(track.getTitle())){
+				System.out.println(this.search(ble).getAlbum());
+			}
+		}
+		logger.debug("Wypisalem rezultat");
+	}
+	
 	
 	public int getSize(){
 		return music.size();

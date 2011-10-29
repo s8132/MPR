@@ -1,0 +1,17 @@
+0    2011-10-29 22:43:03,436 [main] (Music.java:63) DEBUG com.mpr.Music  - Wypisa³em listê!
+14   2011-10-29 22:43:03,450 [main] (Music.java:70) DEBUG com.mpr.Music  - Usunalem element
+15   2011-10-29 22:43:03,451 [main] (Music.java:63) DEBUG com.mpr.Music  - Wypisa³em listê!
+0    2011-10-29 22:43:28,130 [main] (Music.java:51) DEBUG com.mpr.Music  - Doda³e do listy!
+11   2011-10-29 22:43:28,141 [main] (Music.java:51) DEBUG com.mpr.Music  - Doda³e do listy!
+13   2011-10-29 22:43:28,143 [main] (Music.java:51) DEBUG com.mpr.Music  - Doda³e do listy!
+16   2011-10-29 22:43:28,146 [main] (Music.java:51) DEBUG com.mpr.Music  - Doda³e do listy!
+19   2011-10-29 22:43:28,149 [main] (Music.java:63) DEBUG com.mpr.Music  - Wypisa³em listê!
+20   2011-10-29 22:43:28,150 [main] (Music.java:70) DEBUG com.mpr.Music  - Usunalem element
+22   2011-10-29 22:43:28,152 [main] (Music.java:63) DEBUG com.mpr.Music  - Wypisa³em listê!
+0    2011-10-29 22:44:24,362 [main] (Music.java:52) DEBUG com.mpr.Music  - Doda³e do listy!
+11   2011-10-29 22:44:24,373 [main] (Music.java:52) DEBUG com.mpr.Music  - Doda³e do listy!
+15   2011-10-29 22:44:24,377 [main] (Music.java:52) DEBUG com.mpr.Music  - Doda³e do listy!
+19   2011-10-29 22:44:24,381 [main] (Music.java:52) DEBUG com.mpr.Music  - Doda³e do listy!
+24   2011-10-29 22:44:24,386 [main] (Music.java:64) DEBUG com.mpr.Music  - Wypisa³em listê!
+29   2011-10-29 22:44:24,391 [main] (Music.java:71) DEBUG com.mpr.Music  - Usunalem element
+34   2011-10-29 22:44:24,396 [main] (Music.java:64) DEBUG com.mpr.Music  - Wypisa³em listê!
