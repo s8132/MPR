@@ -91,6 +91,16 @@ public class Music extends Multimedia {
 		logger.debug("Edytowa³em element");
 	}
 	
+	public void editMany(String oldTitle, String artist, String album, String year){
+		int inter = 0;
+		for(Music track : music){
+			
+			if(track.getTitle().equalsIgnoreCase(oldTitle)){
+				music.set(inter, new Music(artist, album, year, oldTitle));
+			}
+			inter++;
+		}
+	}
 	
 	public Music search(String title){
 		for(Music track : music){
@@ -102,12 +112,16 @@ public class Music extends Multimedia {
 	}
 	
 	
-	public void searchResult(String ble){
+	public void searchResult(String title){
 		PropertyConfigurator.configure("logging.properties");
 		
+		System.out.println("Tytu³\t| Artysta\t| Album\t\t| Rok");
+		System.out.println("----------------------------------------------------");
+		
 		for(Music track : music){
-			if(this.search(ble).getTitle().equalsIgnoreCase(track.getTitle())){
-				System.out.println(this.search(ble).getAlbum());
+			if(this.search(title).getTitle().equals(track.getTitle())){
+				System.out.println(this.search(title).getTitle() + "\t| " + this.search(title).getArtist()
+						+ "\t| " + this.search(title).getAlbum() + "\t| " + this.search(title).getYear());
 			}
 		}
 		logger.debug("Wypisalem rezultat");
