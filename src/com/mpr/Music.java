@@ -27,6 +27,7 @@ public class Music extends Multimedia {
 		this.album = album;
 		this.year = year;
 		this.title = title;
+		
 	}
 	
 	
@@ -37,11 +38,6 @@ public class Music extends Multimedia {
 	
 	
 	public void addItem(String artist, String album, String year, String title) throws Exception{
-		
-		
-		
-		
-		
 		if (title == ""){
 			PropertyConfigurator.configure("logError.properties");
 			logger.error("Error title");
@@ -64,68 +60,61 @@ public class Music extends Multimedia {
 		logger.debug("Wypisa³em listê!");
 	}
 	
+	
+	
 	public void removeItem(String title){
 		PropertyConfigurator.configure("logging.properties");
-		
 		music.remove(this.search(title));
 		logger.debug("Usunalem element");
 	}
 	
 	public void removeAll(){
 		PropertyConfigurator.configure("logging.properties");
-		
 			music.clear();
 			logger.debug("Usunalem wszystko");
 	}
 	
 	public void edit(String oldTitle, String newTitle, String artist, String album, String year){
 		PropertyConfigurator.configure("logging.properties");
-		
-		int inter = 0;
-		for(Music track : music){
-			inter++;
-			if(track.getTitle().equalsIgnoreCase(oldTitle)){
-				music.set(inter, new Music(artist, album, year, newTitle));
-			}
-		}
+		music.set(music.indexOf(search(oldTitle)), new Music(artist, album, year, newTitle));
 		logger.debug("Edytowa³em element");
 	}
 	
-	public void editMany(String oldTitle, String artist, String album, String year){
+	public void editMany(Music c, String artist, String album, String year){
 		int inter = 0;
 		for(Music track : music){
-			
-			if(track.getTitle().equalsIgnoreCase(oldTitle)){
-				music.set(inter, new Music(artist, album, year, oldTitle));
+			if(c.getTitle().equalsIgnoreCase(track.getTitle())){
+				music.set(inter, new Music(artist, album, year, c.getTitle()));
 			}
 			inter++;
 		}
+		
 	}
 	
-	public Music search(String title){
+	public final Music search(String title){
 		for(Music track : music){
 			if(track.getTitle().equalsIgnoreCase(title)){
 				return track;
 			}
 		}
-		return search(title);
+		return null;
 	}
 	
-	
-	public void searchResult(String title){
+	public void writeList(Music c){
 		PropertyConfigurator.configure("logging.properties");
 		
 		System.out.println("Tytu³\t| Artysta\t| Album\t\t| Rok");
 		System.out.println("----------------------------------------------------");
-		
-		for(Music track : music){
-			if(this.search(title).getTitle().equals(track.getTitle())){
-				System.out.println(this.search(title).getTitle() + "\t| " + this.search(title).getArtist()
-						+ "\t| " + this.search(title).getAlbum() + "\t| " + this.search(title).getYear());
+			for(Music track : music){
+				if(c.getTitle().equals(track.getTitle())){
+					System.out.println(c.getTitle() + "\t| " + c.getArtist()
+							+ "\t| " + c.getAlbum() + "\t| " + c.getYear());
+				}
 			}
-		}
-		logger.debug("Wypisalem rezultat");
+
+		logger.debug("Wypisa³em listê!");
 	}
+	
 	
 	
 	public int getSize(){

@@ -59,10 +59,10 @@ public class Main {
 		test.writeList();
 		
 		System.out.println("\n\nRezultat wyszukiwania:");
-		test.searchResult("Tytu³ 1");
+		test.writeList(test.search("Tytu³ 1"));
 		
 		System.out.println("\n\nEdytowanie wielu elementów: ");
-		test.editMany("Tytu³ 1", "New Artist", "New Album", "New Year");
+		test.editMany(test.search("Tytu³ 1"), "New Artist", "New Album", "New Year");
 		test.writeList();
 		
 		System.out.println("\n\nEdytowanie jednego elementu:");
