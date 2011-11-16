@@ -69,6 +69,7 @@ public class Main {
 		test.edit("Tytu³ 1", "New Title1", "New Artist1", "New Album1", "New Year1");
 		test.writeList();
 		
+				
 		System.out.println("\n\nRezultat po usuniêciu");
 		test.removeItem("Tytu³ 1");
 		test.writeList();
@@ -80,6 +81,24 @@ public class Main {
 		
 		//test.removeAll();
 		
+		
+		System.out.println("\n\nMusic Player\n\n");
+		
+		Music c = new Music("Artysta", "Album", "Rok", "Tytu³C");
+		
+		MusicPlayer player = new MusicPlayer();
+		StopMusic stop = new StopMusic();
+		PauseMusic pause = new PauseMusic();
+		
+		ProcessMusicListener play = new PlayMusic();
+		
+		player.addMusicProcessListener(play);
+		player.addMusicProcessListener(pause);
+		player.addMusicProcessListener(play);
+		player.addMusicProcessListener(stop);
+		
+		player.setMusic(c);
+		player.processMusic();
 		
 	
 	}
