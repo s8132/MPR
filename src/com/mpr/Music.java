@@ -18,11 +18,11 @@ public class Music extends Multimedia {
 	String type;
 	String title;
 	
-	Music(){
+	public Music(){
 		
 	}
 	
-	Music(String artist, String album, String year, String title){
+	public Music(String artist, String album, String year, String title){
 		this.artist = artist;
 		this.album = album;
 		this.year = year;
