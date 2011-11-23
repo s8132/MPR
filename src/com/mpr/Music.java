@@ -27,7 +27,6 @@ public class Music extends Multimedia {
 		this.album = album;
 		this.year = year;
 		this.title = title;
-		
 	}
 	
 	
@@ -48,6 +47,8 @@ public class Music extends Multimedia {
 			logger.debug("Doda³e do listy!");
 	}
 	
+
+	
 	public void writeList(){
 		PropertyConfigurator.configure("logging.properties");
 		
@@ -60,12 +61,25 @@ public class Music extends Multimedia {
 		logger.debug("Wypisa³em listê!");
 	}
 	
-	
+	/*Problem do rozwi¹zania! - Usuwa tylko jeden element*/
+	public void removeAlbum(String album){
+				music.remove(this.searchByAlbum(album));
+	}
 	
 	public void removeItem(String title){
 		PropertyConfigurator.configure("logging.properties");
-		music.remove(this.search(title));
+		music.remove(this.searchByTitle(title));
 		logger.debug("Usunalem element");
+	}
+	
+	
+	
+	public void removeArtist(String artist){
+		music.remove(this.searchByArtist(artist));
+	}
+	
+	public void removeYear(String year){
+		music.remove(this.searchByYear(year));
 	}
 	
 	public void removeAll(){
@@ -76,7 +90,7 @@ public class Music extends Multimedia {
 	
 	public void edit(String oldTitle, String newTitle, String artist, String album, String year){
 		PropertyConfigurator.configure("logging.properties");
-		music.set(music.indexOf(search(oldTitle)), new Music(artist, album, year, newTitle));
+		music.set(music.indexOf(searchByTitle(oldTitle)), new Music(artist, album, year, newTitle));
 		logger.debug("Edytowa³em element");
 	}
 	
@@ -91,9 +105,36 @@ public class Music extends Multimedia {
 		
 	}
 	
-	public final Music search(String title){
+	public final Music searchByTitle(String title){
 		for(Music track : music){
 			if(track.getTitle().equalsIgnoreCase(title)){
+				return track;
+			}
+		}
+		return null;
+	}
+	
+	public final Music searchByAlbum(String album){
+		for(Music track : music){
+			if(track.getAlbum().equalsIgnoreCase(album)){
+				return track;
+			}
+		}
+		return null;
+	}
+	
+	public final Music searchByArtist(String artist){
+		for(Music track : music){
+			if(track.getArtist().equalsIgnoreCase(artist)){
+				return track;
+			}
+		}
+		return null;
+	}
+	
+	public final Music searchByYear(String year){
+		for(Music track : music){
+			if(track.getYear().equalsIgnoreCase(year)){
 				return track;
 			}
 		}

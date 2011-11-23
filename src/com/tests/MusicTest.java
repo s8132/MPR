@@ -43,8 +43,8 @@ public class MusicTest {
 	
 	@Test
 	public void testsearch(){
-		assertNotNull(test.search("Title"));
-		assertNull(test.search("Tiitle"));
+		assertNotNull(test.searchByTitle("Title"));
+		assertNull(test.searchByTitle("Tiitle"));
 		
 	}
 	@Test

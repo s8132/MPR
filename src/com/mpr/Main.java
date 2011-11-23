@@ -57,6 +57,12 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			test.addItem("Artysta 3", "Album 3", "Year 3", "Tytu³ 5");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		
@@ -65,16 +71,19 @@ public class Main {
 		test.writeList();
 		
 		System.out.println("\n\nRezultat wyszukiwania:");
-		test.writeList(test.search("Tytu³ 1"));
+		test.writeList(test.searchByTitle("Tytu³ 1"));
 		
 		System.out.println("\n\nEdytowanie wielu elementów: ");
-		test.editMany(test.search("Tytu³ 1"), "New Artist", "New Album", "New Year");
+		test.editMany(test.searchByTitle("Tytu³ 1"), "New Artist", "New Album", "New Year");
 		test.writeList();
 		
 		System.out.println("\n\nEdytowanie jednego elementu:");
 		test.edit("Tytu³ 1", "New Title1", "New Artist1", "New Album1", "New Year1");
 		test.writeList();
 		
+		System.out.println("\n\nUsuwanie po albumie:");
+		test.removeAlbum("Album 3");
+		test.writeList();
 				
 		System.out.println("\n\nRezultat po usuniêciu");
 		test.removeItem("Tytu³ 1");
@@ -106,7 +115,9 @@ public class Main {
 		player.setMusic(c);
 		player.processMusic();
 		
-	
+		
+		
+		
 	}
 
 }
