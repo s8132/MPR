@@ -52,17 +52,18 @@ public class Main {
 			e.printStackTrace();
 		}
 		try {
-			test.addItem("Artysta 4", "Album 4", "Year 4", "");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			test.addItem("Artysta 3", "Album 3", "Year 3", "Tytu³ 5");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			test.addItem("Artysta 4", "Album 4", "Year 4", "");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		
 		
@@ -77,12 +78,16 @@ public class Main {
 		test.editMany(test.searchByTitle("Tytu³ 1"), "New Artist", "New Album", "New Year");
 		test.writeList();
 		
+		System.out.println("\n\n\n");
+		test.writeListByArtist(test.searchByArtist("Artysta 3"));
+		System.out.println("\n\n\n");
+		
 		System.out.println("\n\nEdytowanie jednego elementu:");
 		test.edit("Tytu³ 1", "New Title1", "New Artist1", "New Album1", "New Year1");
 		test.writeList();
 		
 		System.out.println("\n\nUsuwanie po albumie:");
-		test.removeAlbum("Album 3");
+		test.removeArtist("Artysta 3");
 		test.writeList();
 				
 		System.out.println("\n\nRezultat po usuniêciu");
@@ -117,6 +122,27 @@ public class Main {
 		
 		
 		
+		System.out.println("\n\n\n ---MUSIC MANAGER---\n\n\n");
+		MusicManager musicManager = new MusicManager();
+		Music music1 = new Music("Artysta 1", "album 1", "0000", "Title 1");
+		musicManager.addMusic(music1);
+		Music music2 = new Music("Artysta 2", "album 2", "0000", "Title 2");
+		musicManager.addMusic(music2);
+		Music music3 = new Music("Artysta 3", "album 3", "0000", "Title 3");
+		musicManager.addMusic(music3);
+		List<Music> tracks = musicManager.getAllMusic();
+		
+		
+		System.out.println("\nWyswietlam wyniki z bazy\n\n");
+		System.out.println("ID  | Tytu³\t| Artysta\t| Album\t\t| Rok");
+		System.out.println("----------------------------------------------------");
+		
+		for(Music track : tracks){
+			System.out.println(track.getId() + "  |" + track.getTitle() + "\t| " + track.getArtist()
+					+ "\t| " + track.getAlbum() + "\t| " + track.getYear());
+		}
+		
+		musicManager.clearMusic();
 		
 	}
 

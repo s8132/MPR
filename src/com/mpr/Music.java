@@ -17,6 +17,7 @@ public class Music extends Multimedia {
 	String time;
 	String type;
 	String title;
+	long id;
 	
 	public Music(){
 		
@@ -75,7 +76,13 @@ public class Music extends Multimedia {
 	
 	
 	public void removeArtist(String artist){
-		music.remove(this.searchByArtist(artist));
+		//music.remove(this.searchByArtist(artist));
+		
+		for(Music track : music){
+			if(this.searchByArtist(artist).getArtist()==track.getArtist()){
+				music.remove(this.searchByArtist(artist));
+			}
+		}
 	}
 	
 	public void removeYear(String year){
@@ -141,6 +148,21 @@ public class Music extends Multimedia {
 		return null;
 	}
 	
+	public void writeListByArtist(Music c){
+		PropertyConfigurator.configure("logging.properties");
+		
+		System.out.println("Tytu³\t| Artysta\t| Album\t\t| Rok");
+		System.out.println("----------------------------------------------------");
+			for(Music track : music){
+				if(c.getArtist().equals(track.getArtist())){
+					System.out.println(c.getTitle() + "\t| " + c.getArtist()
+							+ "\t| " + c.getAlbum() + "\t| " + c.getYear());
+				}
+			}
+
+		logger.debug("Wypisa³em listê!");
+	}
+	
 	public void writeList(Music c){
 		PropertyConfigurator.configure("logging.properties");
 		
@@ -157,7 +179,7 @@ public class Music extends Multimedia {
 	}
 	
 	
-	
+	/*GETY*/
 	public int getSize(){
 		return music.size();
 	}
@@ -177,5 +199,31 @@ public class Music extends Multimedia {
 	
 	public String getTitle(){
 		return this.title;
+	}
+	
+	public long getId(){
+		return id;
+	}
+	
+	/*SETY*/
+	
+	public void setId(long id){
+		this.id = id;
+	}
+	
+	public void setTitle(String title){
+		this.title = title;
+	}
+	
+	public void setArtist(String artist){
+		this.artist = artist;
+	}
+	
+	public void setAlbum(String album){
+		this.album = album;
+	}
+	
+	public void setYear(String year){
+		this.year = year;
 	}
 }
