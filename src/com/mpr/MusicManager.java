@@ -51,6 +51,10 @@ public class MusicManager {
 		}
 	}
 	
+	public Connection getConnection(){
+		return connection;
+	}
+	
 	public int addMusic(Music music){
 		int count = 0;
 		try{
